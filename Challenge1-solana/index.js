@@ -19,6 +19,16 @@ const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
 console.log("Public Key of the generated keypair", publicKey);
 
+//Get CLI parameter
+let userPublickey = process.argv.slice(2)[0];
+
+if (userPublickey) {
+  console.log("PublicKey entered by the user", userPublickey);
+} else {
+  userPublickey = publicKey;
+  console.log("User did not entered any PublicKey", publicKey)
+}
+
 // Get the wallet balance from a given private key
 const getWalletBalance = async () => {
     try {
